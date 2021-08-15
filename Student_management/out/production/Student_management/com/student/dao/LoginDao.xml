@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.student.dao.LoginDao">
+    <select id="findTeaByName" resultType="com.student.po.Teacher" parameterType="string">
+        select * from tea
+        where username=#{username}
+    </select>
+    <select id="findAdByName" resultType="com.student.po.Admin" parameterType="string">
+        select * from admin
+        where username=#{username}
+    </select>
+    <select id="findStuByName" resultType="com.student.po.Student" parameterType="string">
+        select * from stu
+        where username=#{username}
+    </select>
+</mapper>

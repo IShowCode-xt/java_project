@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.student.dao.findAllStuDao">
+   <select id="findAllStu" resultType="com.student.po.Student" parameterType="string">
+       select * from stu where 1=1
+       <if test="username !=null and username !=''">
+           and username like concat('%',#{username},'%')
+       </if>
+       <if test="idcard !=null and idcard !=''">
+           and idcard like concat('%',#{idcard},'%')
+       </if>
+   </select>
+    <select id="findStudent" resultType="com.student.po.Student" parameterType="integer">
+        select * from stu where id=#{id}
+    </select>
+
+</mapper>
