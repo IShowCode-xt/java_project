@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+
+<body>
+<canvas id="myCanvas" width="100" height="30"></canvas>
+</body>
+<script type="text/javascript">
+    //生成随机数
+    function randNum(min,max) {
+        return parseInt(Math.random()*(max-min)+min);
+    }
+    //随机生成颜色 rgb
+    function randColor(min,max) {
+        var red=randNum(min,max);
+        var green=randNum(min,max);
+        var blue=randNum(min,max);
+        return `rgb(${red},${green},${blue})`;
+    }
+    //给canvas生成背景颜色
+    //获取canvas
+    var width=100;
+    var heigh=100;
+    var c=document.getElementById("myCanvas");
+    var ctx=c.getContext("2d");
+    console.log(randColor(180,230));
+    ctx.fillStyle=randColor(180,230);//填充颜色,填充的背景颜色，数值越高，颜色越浅
+    //绘制图形的形状
+    ctx.fillRect(0,0,width,heigh);
+    //在图形框中产生随机字符
+    //定义字符的范围
+    var pool="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+    //设置字符出现的个数
+    for (var i=0;i<4;i++){
+        //随机产生一个字符
+        var c=pool[randNum(0,pool.length)];
+        console.log(c);
+        //设置字体的大小
+        var fontStyle=randNum(16,20);
+        //设置字符随机旋转的角度
+        var fontIndex=randNum(-30,30);
+        ctx.font=fontStyle+'px Arial';
+        ctx.textBaseline="top";
+        ctx.fillStyle=randColor(80,150);//设置字符的颜色，要比背景颜色深
+        ctx.save();//将当前字符保存
+        ctx.translate(20*i+10,10);//下一个字符的位移
+        ctx.rotate(fontIndex*Math.PI/180);//下一个字符旋转
+        ctx.fillText(c,0,0);
+        ctx.restore();//恢复
+    }
+    //随机生成干扰线
+    for (var i=0;i<30;i++){
+        ctx.beginPath();
+        ctx.moveTo(randNum(0,width),randNum(0,heigh));
+        ctx.lineTo(randNum(0,width),randNum(0,heigh));
+        ctx.strokeStyle=randColor(150,230);
+        ctx.closePath();//关闭路线
+        ctx.stroke();//绘制
+    }
+    //随机生成干扰原点
+    for (var i=0;i<100;i++){
+        ctx.beginPath();
+        // ctx.arc()
+        ctx.arc(randNum(0,width),randNum(0,heigh),1,0,2*Math.PI);
+        ctx.closePath();
+        ctx.fillStyle=randColor(150,230);
+        ctx.fill();
+    }
+</script>
+</html>

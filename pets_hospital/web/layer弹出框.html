@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <script src="js/jquery-1.12.4.min.js"></script>
+    <script src="js/layer/layer.js"></script>
+</head>
+
+<body>
+<div class="row">
+
+    <div class="form-group">
+        <label class="col-md-1 col-sm-1  col-xs-1 control-label">设备编号:</label>
+        <div class="col-md-4 col-sm-4 col-xs-4">
+            <input type="text" class="form-control number" placeholder="请输入编号" id="">
+        </div>
+    </div>
+
+</div>
+<div id="opts"></div>
+<div class="row">
+    <div class="col-md-12 col-sm-12  col-xs-12">
+        <div class="form-group">
+
+            <button id="fat-btn" class="btn btn-primary"
+                    type="button">添加
+            </button>
+
+        </div>
+    </div>
+</div>
+</body>
+<script>
+    $(function() {
+        var htm = "";
+        htm += "    <div class='row' id='mytest'>";
+        htm += "    <div class='form-group'>";
+        htm += "    <label class='col-md-1 col-sm-1  col-xs-1 control-label'>设备编号:</label>";
+        htm += "    <div class='col-md-4 col-sm-4  col-xs-4'>";
+        htm += "    <input type='text' class='form-control number' placeholder='请输入编号' id=''>";
+        htm += "    </div></div>";
+        htm += "</div>";
+        $('#fat-btn').on('click', function(){
+            layer.open({
+                type: 2,
+                area: ['600px', '360px'],
+                shadeClose: true, //点击遮罩关闭
+                content: "updatePwd.html"
+            });
+        });
+        // $("#fat-btn").click(function() {
+        //         var htm = "";
+        //         htm += "    <div class='row'>";
+        //         htm += "    <div class='form-group'>";
+        //         htm += "    <label class='col-md-1 col-sm-1  col-xs-1 control-label'>设备编号:</label>";
+        //         htm += "    <div class='col-md-4 col-sm-4  col-xs-4'>";
+        //         htm += "    <input type='text' class='form-control number' placeholder='请输入编号' id=''>";
+        //         htm += "    </div></div>";
+        //         htm += "</div>";
+        //
+        //         $('#opts').append(htm);
+        //
+        // }
+        // );
+
+    });
+</script>
